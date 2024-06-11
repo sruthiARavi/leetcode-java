@@ -1,3 +1,8 @@
+/*
+ * Maximum Nesting Depth of the Parentheses
+ * Given a valid parentheses string s, return the nesting depth of s. The nesting depth is the maximum number of nested parentheses.
+ */
+
 class Leetcode1614 {
     public int maxDepth(String s) {
         int maxNestDepth = 0;
