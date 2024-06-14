@@ -10,16 +10,51 @@
 
 class Leetcode2037 {
     public int minMovesToSeat(int[] seats, int[] students) {
+        // Counting sort approach
         int result = 0;
 
-        Arrays.sort(seats);
-        Arrays.sort(students);
+        int maxSeats = findMaxNum(seats);
+        int maxStudents = findMaxNum(students);
+        int maxPosition = maxSeats > maxStudents ? maxSeats : maxStudents;
 
-        for (int i = 0; i < seats.length; i++) {
-            result += Math.abs(seats[i] - students[i]);
+        int[] differences = new int[maxPosition];
+
+        for (int position : seats) {
+            differences[position - 1]++; // positive integer
         }
 
-        return result;
+        for (int position : students) {
+            differences[position - 1]--; // negative integer
+        }
 
+        int moves = 0, unmatched = 0;
+        for (int difference : differences) {
+            moves += Math.abs(unmatched);
+            unmatched += difference;
+        }
+
+        return moves;
+
+        // Greedy approach (sorting)
+        /*
+         * int result = 0;
+         * 
+         * Arrays.sort(seats);
+         * Arrays.sort(students);
+         * 
+         * for (int i = 0; i < seats.length; i++) {
+         * result += Math.abs(seats[i] - students[i]);
+         * }
+         * 
+         * return result;
+         */
+    }
+
+    private int findMaxNum(int[] arr) {
+        int maxNum = 0;
+        for (int value : arr) {
+            maxNum = maxNum > value ? maxNum : value;
+        }
+        return maxNum;
     }
 }
