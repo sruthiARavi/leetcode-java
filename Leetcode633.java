@@ -3,7 +3,7 @@
  * Given a non-negative integer c, decide whether there're two integers a and b such that a2 + b2 = c.
  */
 class Leetcode633 {
-    // binary search - same complexity but worse space complexity 
+    // binary search - same time complexity but worse space complexity 
     boolean doesNumExist(long min, long max, long b_square) {
         while (min <= max) {
             long mid = min + (max - min) / 2;
