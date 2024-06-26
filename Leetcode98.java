@@ -29,6 +29,9 @@ class Solution {
     }
 
     boolean isValid(TreeNode node, long min, long max) {
+       /* checking if value for left nodes are in the range of lowest to current node val and 
+        * the right nodes are in the range of current node val to highest (not inclusive). 
+        */
         if (node == null) {
             return true;
         }
