@@ -6,7 +6,7 @@
     * The right subtree of a node contains only nodes with keys greater than the node's key.
  * Both the left and right subtrees must also be binary search trees.
  */
-class Leetcode98 {
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -22,7 +22,7 @@ class Leetcode98 {
  * }
  * }
  */
-class Solution {
+class Leetcode98 {
     public boolean isValidBST(TreeNode root) {
         return isValid(root.left, Long.MIN_VALUE, root.val) &&
                 isValid(root.right, root.val, Long.MAX_VALUE);
