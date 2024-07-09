@@ -11,7 +11,7 @@
  */
 class Leetcode1701 {
     public double averageWaitingTime(int[][] customers) {
-      //TODO : This solution has to be checked and optimized.
+      //TODO : This solution has to be checked and optimized. Data type assignment has been done blindly for now. 
         long currentTime = 0; 
         long preparationTime = 0;         
         long waitingTime = 0;         
