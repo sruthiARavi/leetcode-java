@@ -13,15 +13,9 @@ class Leetcode2914 {
          * We can decompose the whole string into disjoint blocks of size 2 and
          * find the minimum number of changes required to make those blocks beautiful
          */
-        int minReqChanges = 0;
-        char c1 = 0, c2 = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (i % 2 == 0) {
-                c1 = s.charAt(i);
-                continue;
-            }
-            c2 = s.charAt(i);
-            if (c1 != c2) {
+        int minReqChanges = 0;        
+        for (int i = 0; i < s.length(); i+=2) {
+            if (s.charAt(i) != s.charAt(i+1)) {
                 minReqChanges++;
             }
         }
