@@ -5,7 +5,7 @@
  * Return the minimum number of operations needed to make the values at each level sorted in a strictly increasing order.
  * The level of a node is the number of edges along the path between it and the root node.
  */
-class Solution {
+class Leetcode2471 {
     public int minimumOperations(TreeNode root) {
         // BFS search
         Queue<TreeNode> queue = new LinkedList<>();
