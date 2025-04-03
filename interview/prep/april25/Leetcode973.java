@@ -22,6 +22,7 @@ class Leetcode973 {
         //go thru points, maintain max heap and get k smallest square values
         //PQ poll gives you poll head i.e. the largest value in the queue, that's why you are maintaining a maxHeap
         //By default PQ is minHeap
+        // Note: We can simulate max heap functionality in a min heap data structure by inserting −dist instead of dist, if necessary.
         //int[] has square value, i val for retrieving the corresponding arr as points[i]
         PriorityQueue<int[]> maxHeap = new PriorityQueue<>((a, b) -> b[0] - a[0]);
         int[][] ans = new int[k][2];
