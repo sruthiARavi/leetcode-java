@@ -10,16 +10,27 @@
    ** 1 <= nums[i] <= 20
  */
 class Leetcode1863 {
-    //recursive call
+    public int subsetXORSum(int[] nums) {
+        //Check the neetcode video for this - https://www.youtube.com/watch?v=HToBFhTa1uQ
+        //Multiplying a number by 2^x is the same as left shifting it by 2^x
+        int or_num = 0;
+        for (int i = 0; i < nums.length; i++) {
+            //We perform OR operation so that we get the or_num bit set if at least one of the numbers in nums has a corresponding bit set in it
+            or_num |= nums[i];
+        }
+        return or_num << nums.length - 1; // This is the same as or_num * (2^(nums.length-1))
+    }
+
+    //recursive call - O(2^n since 2^n subsets would be there which led to 2^n calls
     int dfs(int i, int[] nums, int total) {
         if (i == nums.length) {
             return total;
         }
         return dfs(i + 1, nums, total ^ nums[i]) //include this num in subset
-                + dfs(i + 1, nums, total); //don't include this num in the subset 
+                + dfs(i + 1, nums, total); //don't include this num in the subset
     }
 
-    public int subsetXORSum(int[] nums) {
+    public int subsetXORSumRecursive(int[] nums) {
         return dfs(0, nums, 0);
     }
 }
