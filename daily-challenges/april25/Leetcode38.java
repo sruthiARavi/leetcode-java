@@ -1,5 +1,6 @@
 /*
  * 38. Count and Say
+ * 
  * The count-and-say sequence is a sequence of digit strings defined by the recursive formula:
    ** countAndSay(1) = "1"
    ** countAndSay(n) is the run-length encoding of countAndSay(n - 1).
@@ -9,8 +10,15 @@
  * we replace "33" with "23", replace "222" with "32", replace "5" with "15" and replace "1" with "11". 
  * Thus the compressed string becomes "23321511".
  * Given a positive integer n, return the nth element of the count-and-say sequence.
+ * 
  * Constraints:
    ** 1 <= n <= 30
+ * 
+ * Time complexity explanation : (From lc user @Daniel513) 
+ * Each 3 iterations a single digit becomes 4 digits. 
+ * If we treat every three iterations as a recursion, since we have n iterations, we then have n/3 such recursions. 
+ * During each recursion a digit becomes fourfold, then after (n/3) recursions we have 4^(n/3) digits.
+ * Or 2^(2n/3). Therefore 2^2n * n (n times for loop)
  */
 class Leetcode38 {
     public String countAndSay(int n) {
