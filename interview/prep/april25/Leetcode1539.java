@@ -22,7 +22,18 @@
 class Leetcode1539 {
 
     public int findKthPositive(int[] arr, int k) {
-        //Since it is sorted, use bin search 
+        //Since it is sorted, use bin search
+        //See this - https://youtu.be/iWT1cH6LXLc 
+        int left = 0, right = arr.length;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if ((arr[mid] - (mid + 1)) < k) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return left + k; //or right+k since both will be equal
     }
 
     public int findKthPositiveBrute(int[] arr, int k) {
