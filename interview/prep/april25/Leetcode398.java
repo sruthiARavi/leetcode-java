@@ -40,6 +40,7 @@ class Leetcode398 {
     }
 
     public int[] pick_ReservoidSampling_Multi(int target, int k) {
+        //This can also be used for variation : output k random elts from arr. However, if you want to avoid duplication, tracking using is set is needed which occupies O(k) space 
         int[] reservoir = new int[k];
         int count = 0;
         int filled = 0;
