@@ -39,6 +39,26 @@ class Leetcode398 {
         //return pick_Brute(target); 
     }
 
+    public int pick_reservoirSampling_randIdxOfMax() {
+        //variant 2 : pick a random idx of the max number. Use constant space, O(n) time. values in range 100, 100 and nums len is 1 - 2*10^4
+        int max = Integer.MIN_VALUE;
+        int pickIdx = -1;
+        int totalNumOfElts = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+                totalNumOfElts = 1;
+                pickIdx = i;
+            } else if (arr[i] == max) {
+                totalNumOfElts++;
+                if (rand.nextInt(totalNumOfElts) == 0) {
+                    pickIdx = i;
+                }
+            }
+        }
+        return pickIdx;
+    }
+
     public int[] pick_ReservoidSampling_Multi(int target, int k) {
         //This can also be used for variation : output k random elts from arr. However, if you want to avoid duplication, tracking using is set is needed which occupies O(k) space 
         int[] reservoir = new int[k];
