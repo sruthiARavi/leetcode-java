@@ -14,6 +14,9 @@
    ** At most 104 calls will be made to pick.
  */
 
+import java.util.Random;
+import java.util.Arrays;
+
 class Leetcode398 {
 
     int[] arr;
@@ -36,6 +39,26 @@ class Leetcode398 {
         //return pick_Brute(target); 
     }
 
+    public int[] pick_ReservoidSampling_Multi(int target, int k) {
+        int[] reservoir = new int[k];
+        int count = 0;
+        int filled = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == target) {
+                count++;
+                if (filled < k) {
+                    reservoir[filled++] = i;
+                } else {
+                    int idx = rand.nextInt(count);
+                    if (idx < k) {
+                        reservoir[idx] = i;
+                    }
+                }
+            }
+        }
+        return (filled < k) ? Arrays.copyOf(reservoir, filled) : reservoir;
+    }
+  
     public int pick_ReservoidSampling(int target) {
         /*
          * Reservoir sampling : 
