@@ -19,6 +19,36 @@
    ** strings[i] consists of lowercase English letters.
  */
 class Leetcode249 {
+
+    public String rotateStringByFactor(String s, int rotationFactor) {
+        /*
+         * Variation 1 : 
+         * rotating a string with a specific rotational factor for different types of characters:
+         * Lowercase letters ('a' to 'z') are rotated to the next letter, wrapping around to 'a' after 'z'.          
+         * Uppercase letters ('A' to 'Z') are rotated similarly, wrapping around to 'A' after 'Z'.          
+         * Numbers ('0' to '9') are rotated to the next digit, wrapping around to '0' after '9'.
+         * Other characters (like spaces, punctuation, etc.) remain unchanged.
+         */
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            char newChar;
+            if (Character.isLowerCase(c)) {
+                //rotate
+                newChar = (char) ((((c - 'a') + rotationFactor + 26) % 26) + 'a');
+            } else if (Character.isUpperCase(c)) {
+                //rotate
+                newChar = (char) ((((c - 'A') + rotationFactor + 26) % 26) + 'A');
+            } else if (Character.isDigit(c)) {
+                //rotate
+                newChar = (char) ((((c - '0') + rotationFactor + 10) % 10) + '0');
+            } else {
+                newChar = c;
+            }
+            sb.append(newChar);
+        }
+        return sb.toString();
+    }
+  
     public List<List<String>> groupStrings(String[] strings) {
         //Alternative : normalize all strings to start with a fixed char, say 'a'. 
         
