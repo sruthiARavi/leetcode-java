@@ -14,6 +14,44 @@ class Leetcode54 {
         LEFT, RIGHT, UP, DOWN
     }
 
+      public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> ans = new ArrayList<>();
+
+        int leftBoundary = 0, rightBoundary = matrix[0].length - 1;
+        int topBoundary = 0, bottomBoundary = matrix.length - 1;
+
+        while (leftBoundary <= rightBoundary && topBoundary <= bottomBoundary) {
+            //do right traversal 
+            for (int i = leftBoundary; i <= rightBoundary; i++) {
+                ans.add(matrix[topBoundary][i]);
+            }
+            topBoundary++;
+
+            //do down traversal 
+            for (int i = topBoundary; i <= bottomBoundary; i++) {
+                ans.add(matrix[i][rightBoundary]);
+            }
+            rightBoundary--;
+
+            //do left traversal 
+            if (topBoundary <= bottomBoundary) {
+                for (int i = rightBoundary; i >= leftBoundary; i--) {
+                    ans.add(matrix[bottomBoundary][i]);
+                }
+                bottomBoundary--;
+            }
+
+            //do up traversal 
+            if (leftBoundary <= rightBoundary) {
+                for (int i = bottomBoundary; i >= topBoundary; i--) {
+                    ans.add(matrix[i][leftBoundary]);
+                }
+                leftBoundary++;
+            }
+        }
+        return ans;
+    }
+
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> ans = new ArrayList<>();
 
