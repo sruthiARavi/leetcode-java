@@ -14,7 +14,9 @@ class Leetcode17 {
         call dfs method 
         delete what you added 
      */
-
+  
+    //we can also brute force with 4 for loops which is probably better complexity wise but it doesnt scale 
+  
     Map<Character, String> map = Map.of(
             '2',
             "abc",
