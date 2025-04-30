@@ -25,6 +25,27 @@ class Leetcode200 {
         return ans;
     }
 
+      void bfs(char[][] grid, int x, int y) {
+        if (x < 0 || y < 0 || x >= grid.length || y >= grid[0].length ||
+                grid[x][y] == '0' || grid[x][y] == '2') {
+            return;
+        }
+
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[] { x, y });
+        grid[x][y] = '2'; // Mark as visited
+
+        while (!queue.isEmpty()) {
+            int[] cell = queue.poll();
+            //explore neighbors 
+            bfs(grid, x - 1, y); // Up
+            bfs(grid, x + 1, y); // Down
+            bfs(grid, x, y - 1); // Left
+            bfs(grid, x, y + 1); // Right
+        }
+    }
+
+
     void dfs(char[][] grid, int x, int y) {
         if (x < 0 || y < 0 || x >= grid.length || y >= grid[0].length ||
                 grid[x][y] == '0' || grid[x][y] == '2') {
