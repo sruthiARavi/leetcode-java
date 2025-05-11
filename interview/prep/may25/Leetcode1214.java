@@ -22,7 +22,7 @@
  *     }
  * }
  */
-class Solution {
+class Leetcode1214 {
     public boolean twoSumBSTs(TreeNode root1, TreeNode root2, int target) {
         Set<Integer> t1 = new HashSet<>(); 
         dfs(root1, t1); 
